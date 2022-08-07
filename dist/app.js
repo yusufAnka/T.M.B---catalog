@@ -1,11 +1,16 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require('express');
 const path = require('path');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const dotenv = require('dotenv').config();
+// const dotenv = require('dotenv').config()
+const dotenv_1 = __importDefault(require("dotenv"));
+const dotEnv = dotenv_1.default.config();
 const { connectDB } = require('./mongoose/db');
 connectDB();
 const { errorHandler } = require('./middlewares/errorHandler');

@@ -3,7 +3,10 @@ const path = require('path');
 const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const dotenv = require('dotenv').config()
+// const dotenv = require('dotenv').config()
+import dotenv from 'dotenv';
+const dotEnv = dotenv.config();
+
 const { connectDB } = require('./mongoose/db')
 connectDB()
 import { Request, Response, NextFunction } from 'express'

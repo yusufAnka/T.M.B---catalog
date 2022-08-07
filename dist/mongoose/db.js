@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const mongoose = require('mongoose');
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        console.log('Here:', process.env.MONGO_URI);
         const conn = yield mongoose.connect(process.env.MONGO_URI);
         console.log(`MongoDB connected to ${conn.connection.host}`);
     }
