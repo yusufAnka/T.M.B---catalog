@@ -1,0 +1,23 @@
+<html lang="en">
+<%- include("./partial/head.ejs") %>
+
+<body>
+  <%- include("./partial/navbar.ejs") %>
+  <h1 class="yuse">Orders</h1>
+  <div class="blogs prodiv">
+    
+    <% if (orders.length > 0) { %>
+        <% orders.forEach(order => { %>     
+    <div class="m1-2 mb-1 img-para">
+          <h6><b>Fulfilled order:</b> <%= order %></h6>
+    </div>
+
+      <% }) %>
+    <% } else { %>
+      <p>You have no previous transaction</p>
+    <% } %>
+  </div>
+
+  <%- include("./partial/footer.ejs") %>
+</body>
+</html>

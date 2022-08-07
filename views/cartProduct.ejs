@@ -1,0 +1,46 @@
+<html lang="en">
+<%- include("./partial/head.ejs") %>
+
+<body>
+  <%- include("./partial/navbar.ejs") %>
+
+
+    <h1 class="market-prod">Checkout</h1>
+  <div class="blogs contented">
+    <% if (products.length > 0) { %>
+      <% products.forEach(product => { %>
+        <div class="m1-2 mb-1 img-para" >
+          <img src="<%= product.imageUrl %>" alt="shoe/wears/accessories" class="photos">
+          <p>Name: <%= product.Name %></p>
+          <p>Quantity: <%= product.Quantity %></p>
+          <p>Price: <%= product.Price %></p>
+          <p>Total: $<%= product["Total Price"] %></p>
+          <form action="/api/products/delprd/delete?_method=DELETE" method="POST">
+            <input type="hidden" name="id" value="<%= product._id %>" />
+            <input type="hidden" name="name" value="<%= product.Name %>" />
+            <input type="submit" value="Remove" class="btn btn-warning mb-3 ml-4" />
+          </form>
+        </div>
+    
+          <% }) %>
+
+        <% } else { %>
+        <p class="checkoutword ">There are no products to display in cart...</p>
+    <% } %>
+    </div>
+    <br />
+    <% if (total && uid) { %>
+        <form action="/api/products/buy/all" method="POST">
+          <input type="hidden" name="total" value="<%= total %>" />
+          <input type="submit" value="Pay"  class="btn btn-success mb-3 ml-3" />
+        </form>
+      <% } %>
+      <% if (total && uid) { %>
+        <form action="/api/products/delprd/all?_method=DELETE" method="POST">
+            <input type="submit" value="Remove all items" class="btn btn-danger mb-3 ml-3" />
+        </form>
+      <% } %>
+
+  <%- include("./partial/footer.ejs") %>
+</body>
+</html>

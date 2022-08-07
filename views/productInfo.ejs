@@ -1,0 +1,116 @@
+<html lang="en">
+<%- include("./partial/head.ejs") %>
+
+<body>
+  <%- include("./partial/navbar.ejs") %>
+
+   <h1 class="text-center editp">Products</h1>
+
+  <div class="blogs content">
+   
+
+    <% if (products.length > 0) { %>
+      <% products.forEach(product => { %>
+
+            
+        <div class="m1-2 mb-1">
+          <img src="<%= product.imageUrl %>" alt="shoe/wears/accessories" class="photos dit">
+         
+          <div class="ditw">
+             <p><b>Name:</b> <%= product.name %></p>
+          <p> <b>Quantity:</b> <%= product.Quantity %> in stock</p>
+          <p><b>Price:</b> <%= product.price %></p>
+          <p><b>Size:</b> <%= product.size %></p>
+          <p><b>Type:</b> <%= product.type %></p>
+          </div>
+        </div>
+
+
+
+
+
+<div class="accordion" id="accordionExample">
+     <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button accordbtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Edit
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        
+            <div class="containerss">
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-5">
+
+
+            <% if (Type === 'Admin') { %>
+              <form action="/api/products/update/<%= product._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                  <label for="name" class="form-label">Name:</label>
+                  <input type="text" name="name" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Quantity:</label>
+                  <input type="text" class="form-control" name="Quantity">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Product Description:</label>
+                  <textarea class="form-control" name="Description"></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Price:</label>
+                  <input type="text" class="form-control" name="price">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Size:</label>
+                  <input type="text" class="form-control" name="size">
+                </div>
+                <div class="form-group">
+                  <label for="name" class="form-label">Image Url:</label>
+                  <input type="text" name="imageUrl" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="type">Choose a type:</label>
+                 <select name="type" class="form-select form-select-lg mb-3">
+                      <option selected value="shoe">Shoe</option>
+                      <option value="wears">Wears</option>
+                      <option value="accessories">Accessories</option>
+                  </select>
+              </div>
+                  <button type="submit" class="btn btn-success">Submit Update</button>
+              </form>
+
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+            </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+                
+              <form action="/api/products/<%= product._id %>?_method=DELETE" method="POST">
+                  <button type="submit" class="btn btn-danger jj ml-5">Delete Product</button>
+              </form>
+              
+              <br/>
+              <a href="/home" class="btn btn-secondary xx">Go to Home</a>
+              <a href="/newproduct" class="btn btn-warning">Add new product</a>
+            <% } %>
+
+
+      <% }) %>
+    <% } else { %>
+      <p>There are no products to display...</p>
+    <% } %>
+  </div>
+
+  <%- include("./partial/footer.ejs") %>
+</body>
+</html>

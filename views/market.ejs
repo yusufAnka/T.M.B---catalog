@@ -1,0 +1,54 @@
+<html lang="en">
+  <%- include("./partial/head.ejs") %>
+
+  <body class="bodyp">
+    <%- include("./partial/navbar.ejs") %>
+
+    <h1 class="market-prod">Products</h1>
+    <div class="blogs contented">
+      <% if (products.length > 0) { %> <% products.forEach(product => { %>
+      <div class="m1-2 mb-1 img-para">
+        <img
+          src="<%= product.imageUrl %>"
+          alt="shoe/wears/accessories"
+          class="photos"
+        />
+        <p>Name: <%= product.name %></p>
+        <p>Quantity: <%= product.Quantity %> in stock</p>
+        <p>Price: <%= product.price %></p>
+        <p>size: <%= product.size %></p>
+        <% if (Type === "User") { %>
+        <form action="/api/products/cart/<%= product._id %>" method="POST">
+          <input type="hidden" name="name" value="<%= product._id %>" />
+          <label for="Quantity" class="textsuc" style="font-size: 0.6rem">Qty</label>
+          <input type="number" name="Quantity" min="1" max="<%= product.Quantity %>" class="Quantity" required />
+          <input type="submit" class="addproductw btn btn-success" value="Add To Cart" />
+        </form>
+        <% } %> <% if (Type === "Agent") { %>
+        <form action="/api/products/cart/<%= product._id %>" method="post">
+          <input type="hidden" name="name" value="<%= product._id %>" />
+          <label for="Quantity" class="textsuc" style="font-size: 0.6rem"
+            >Qty</label
+          >
+          <input type="number" id="Aqty" name="Quantity" min="1" max="<%= product.Quantity %>" class="Quantity" required />
+          <input type="submit" id="Agentqty" class="addproductw btn btn-success" value="Add To Products" />
+        </form>
+        <% } %> <% if (Type === 'Admin') { %>
+        <h6>
+          <a class="imp-header" href="/api/products/edit/<%= product._id %>"
+            >Edit</a
+          >
+        </h6>
+        <% } %>
+      </div>
+
+      <% }) %> <% } else { %>
+      <p>There are no products to display...</p>
+      <% } %>
+    </div>
+    <br />
+    <% if (Type==='Admin' ) { %>
+    <a href="/newproduct" class="btn btn-warning addpb">Add new Product(s)</a>
+    <% } %> <%- include("./partial/footer.ejs") %>
+  </body>
+</html>

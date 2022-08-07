@@ -1,0 +1,50 @@
+<html lang="en">
+<%- include("./partial/head.ejs") %>
+
+<body>
+  <%- include("./partial/navbar.ejs") %>
+  <h1 class="yuse">Agents</h1>
+  <div class="blogs prodiv">
+   
+
+    <% if (users.length > 0) { %>
+      <% users.forEach(usr => { %>
+        <div class="m1-2 mb-1 usethem">
+          <h5 class="trans"><b>Agent Info</b></h5>
+          <p><b>Balance:</b> $<%= usr.balance %></p>
+          <p><strong>Username:</strong> <%= usr.username %></p>
+          <p><strong>Email:</strong> <%= usr.email %></p>
+          <p><strong>Phone:</strong> <%= usr.phone %></p>
+          <p><strong>Banned:</strong> <%= usr.isBanned %></p>
+          <div><h5 class="products"><b>Personal Products</b></h5>
+            <% if (usr.products.length > 0) { %>
+                <% usr.products.forEach(prd => { %>
+                    <p><strong>Name:</strong> <%= prd.name %></p>
+                    <p><b>Quantity:</b> <%= prd.Quantity %></p>
+                    <p><b>Price:</b> $<%= prd.price %></p>
+                <% }) %>
+            <% } else { %>
+                <p>No product to display</p>
+            <% } %>
+           </div>
+
+           <div><h5 class="trans"><b>Previous Transaction</b></h5>
+            <% if (usr.prevTransactions.length > 0) { %>
+                <% usr.prevTransactions.forEach(trans => { %>
+                    <p>Order: <%= trans %></p>
+                <% }) %>
+            <% } else { %>
+                <p>No previous transaction</p>
+            <% } %>
+           </div>
+        </div>
+
+      <% }) %>
+    <% } else { %>
+      <p>There is no user to display...</p>
+    <% } %>
+  </div>
+
+  <%- include("./partial/footer.ejs") %>
+</body>
+</html>
