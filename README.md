@@ -1,15 +1,11 @@
-# Memories
+# tmb
 
 ![Memories](https://i.ibb.co/Z8Y0CJv/Screenshot-2020-10-30-at-11-10-04.png)
 
 ## Introduction
-This is a code repository for the corresponding video tutorial - https://youtube.com/playlist?list=PL6QREj8te1P7VSwhrMf3D3Xt4V6_SRkhu.
+TMB Catalogue an online web portal to ease digital logistic services, Provided technical assistance outside of ‘standard working hours’ to customers to assist with ‘High Severity’ product issues in order to
+deliver true customer delight & providing solutions in a timely and efficient manner.
 
-Using React, Node.js, Express & MongoDB you'll learn how to build a Full Stack MERN Application - from start to finish. The App is called "Memories" and it is a simple social media app that allows users to post interesting events that happened in their lives.
-
-By the end of this video, you will have a strong understanding of how the MERN Stack works.
-
-## Launch your development career with project-based coaching - https://www.jsmastery.pro
-
+Technologies used: React, Redux, Material-UI, Node.js, Express & MongoDB (Full Stack MERN Application) 
 Setup:
 - run ```npm i && npm start``` for both client and server side to start the app
